@@ -11,9 +11,8 @@ jobs:
       - uses: actions/setup-java@v4
         with:
           java-version: 17
-          distribution: 'adopt'
-  
-      - run: mvn build
+          distribution: "oracle"
+          cache: "maven"
 
   test_v3:
     runs-on: windows-latest
@@ -22,7 +21,5 @@ jobs:
       - uses: actions/setup-java@v3
         with:
           java-version: 17
-          distribution: 'adopt'
-
-     
-      - run: mvn build
+          distribution: "oracle"
+          cache: "maven"
