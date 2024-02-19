@@ -12,7 +12,7 @@ jobs:
         with:
           java-version: 17
           distribution: 'adopt'
-      - run: mvn test
+      - run: mvn build
 
   test_v3:
     runs-on: windows-latest
@@ -22,4 +22,4 @@ jobs:
         with:
           java-version: 17
           distribution: 'adopt'
-      - run: mvn test
+      - run: mvn build
