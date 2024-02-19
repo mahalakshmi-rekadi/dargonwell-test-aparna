@@ -11,7 +11,7 @@ jobs:
       - uses: actions/setup-java@v4
         with:
           java-version: 17
-          cache: 'Adopt'
+          distribution: 'adopt'
       - run: mvn test
 
   test_v3:
@@ -21,5 +21,5 @@ jobs:
       - uses: actions/setup-java@v3
         with:
           java-version: 17
-          cache: 'Adopt'
+          distribution: 'adopt'
       - run: mvn test
