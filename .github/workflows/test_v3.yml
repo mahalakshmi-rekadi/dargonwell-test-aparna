@@ -6,7 +6,7 @@ on:
 jobs:
   test_v4:
     runs-on: ubuntu-latest
-    name: Testing on Github Runner for temurin sdk
+    name: Testing v4
     steps:
       - uses: actions/setup-java@v4
         with:
@@ -15,9 +15,9 @@ jobs:
 
   test_v3:
     runs-on: windows-latest
-    name: Testing on Github Runner for zulu sdk
+    name: Testing v3
     steps:
-      - uses: actions/setup-java@v4\3
+      - uses: actions/setup-java@v3
         with:
           distribution: temurin
           java-version: 17
