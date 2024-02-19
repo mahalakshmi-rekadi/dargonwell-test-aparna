@@ -10,8 +10,16 @@ jobs:
     steps:
       - uses: actions/setup-java@v4
         with:
-          distribution: temurin
           java-version: 17
+          cache: 'gradle'
+          distribution: 'corretto'
+
+      - name: Build with Gradle
+        uses: gradle/gradle-build-action@v2.12.0
+        with:
+          arguments: build
+
+      - run: ./gradlew build
 
   test_v3:
     runs-on: windows-latest
@@ -19,5 +27,13 @@ jobs:
     steps:
       - uses: actions/setup-java@v3
         with:
-          distribution: temurin
           java-version: 17
+          cache: 'gradle'
+          distribution: 'corretto'
+
+      - name: Build with Gradle
+        uses: gradle/gradle-build-action@v2.12.0
+        with:
+          arguments: build
+
+      - run: ./gradlew build
