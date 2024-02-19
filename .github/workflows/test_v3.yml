@@ -8,6 +8,11 @@ jobs:
     runs-on: ubuntu-latest
     name: Testing v4
     steps:
+
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Setup Java
       - uses: actions/setup-java@v4
         with:
           java-version: 17
@@ -18,6 +23,11 @@ jobs:
     runs-on: windows-latest
     name: Testing v3
     steps:
+
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Setup Java
       - uses: actions/setup-java@v3
         with:
           java-version: 17
