@@ -12,6 +12,7 @@ jobs:
         with:
           java-version: 17
           distribution: 'adopt'
+      - run: mvn -f path/to/pom.xml <goals> ...     
       - run: mvn build
 
   test_v3:
@@ -22,4 +23,6 @@ jobs:
         with:
           java-version: 17
           distribution: 'adopt'
+
+      - run: mvn -f path/to/pom.xml <goals> ...  
       - run: mvn build
