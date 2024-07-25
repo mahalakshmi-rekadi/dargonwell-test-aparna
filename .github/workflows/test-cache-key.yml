@@ -17,3 +17,18 @@ jobs:
         distribution: 'adopt'
         java-version: '17'
         cache: 'maven'
+
+    - name: Cache dependencies
+      uses: actions/cache@v3
+      with:
+        path: |
+          ~/.m2/repository
+        key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
+        restore-keys: |
+          ${{ runner.os }}-maven-
+
+    - name: Verify cache path
+      run: ls -la ~/.m2/repository
+
+    - name: Install dependencies
+      run: mvn install -DskipTests
