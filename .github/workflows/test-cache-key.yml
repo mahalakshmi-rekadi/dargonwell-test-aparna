@@ -27,8 +27,6 @@ jobs:
         restore-keys: |
           ${{ runner.os }}-maven-
 
-    - name: Verify cache path
-      run: ls -la ~/.m2/repository
-
+   
     - name: Install dependencies
       run: mvn install -DskipTests
