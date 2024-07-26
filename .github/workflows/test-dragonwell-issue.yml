@@ -15,7 +15,7 @@ jobs:
       uses: actions/checkout@v4
 
     - name: Setup Java
-      uses: aparnajyothi-y/setup-java@dragonwell-fix
+      uses: aparnajyothi-y/setup-java@dragonwell-failure-fix
       with:
         distribution: 'dragonwell'
         java-version: ${{ matrix.java-version }}
