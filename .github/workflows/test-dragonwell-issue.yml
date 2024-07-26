@@ -1,0 +1,24 @@
+name: Test Java Versions
+
+on: [push, pull_request]
+
+jobs:
+  test-java-versions:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        java-version: [11.0.23.9, 17.0.5.0.5+8]
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Setup Java
+      uses: actions/setup-java@v4
+      with:
+        distribution: 'dragonwell'
+        java-version: ${{ matrix.java-version }}
+    
+    - name: Verify Java version
+      run: java -version
