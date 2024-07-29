@@ -1,6 +1,7 @@
 name: Test Java Versions
 
-on: [push, pull_request]
+on: 
+ workflow_dispatch:
 
 jobs:
   test-java-versions:
@@ -8,14 +9,14 @@ jobs:
 
     strategy:
       matrix:
-        java-version: [11.0.23.9, 17.0.5.0.5+8]
+        java-version: [17.0.3+0.3+7]
 
     steps:
     - name: Checkout code
       uses: actions/checkout@v4
 
     - name: Setup Java
-      uses: aparnajyothi-y/setup-java@main
+      uses: Accelerator1996/setup-java@main
       with:
         distribution: 'dragonwell'
         java-version: ${{ matrix.java-version }}
