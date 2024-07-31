@@ -9,7 +9,7 @@ jobs:
 
     strategy:
       matrix:
-        java-version: [17.0.3+0.3+7]
+        java-version: [11]
 
     steps:
     - name: Checkout code
@@ -21,5 +21,3 @@ jobs:
         distribution: 'dragonwell'
         java-version: ${{ matrix.java-version }}
     
-    - name: Verify Java version
-      run: java -version
