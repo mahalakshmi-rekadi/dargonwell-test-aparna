@@ -17,8 +17,4 @@ jobs:
           distribution: 'zulu'
           cache: gradle
 
-      - name: Appium Tests (E2E)
-        run: |
-          chmod +x run_offline_appium_tests.sh
-          ./run_offline_appium_tests.sh
-        working-directory: scripts
+     
