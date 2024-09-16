@@ -1,34 +1,26 @@
-name: Appium Tests
+#!/bin/bash
 
-on:
-  push:
-    branches:
-      - "develop"
-  pull_request:
-    branches:
-      - "main"
-      - "develop"
+# Print a message indicating the start of the script
+echo "Starting Appium Tests"
 
-jobs:
-  appium-tests:
-    runs-on: [self-hosted, macOS, ARM64]
+# Start the Appium server in the background
+appium &
 
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4.1.7
+# Wait for a few seconds to ensure the Appium server is up and running
+sleep 10
 
-      - name: Set up JDK 17
-        uses: actions/setup-java@v4.3.0
-        with:
-          java-version: '17'
-          distribution: 'zulu'
-          cache: gradle
+# Navigate to the directory containing your test scripts
+cd /path/to/your/test/scripts
 
-      - name: Grant execute permission for gradlew
-        run: chmod +x gradlew
+# Run your Appium tests using a test runner, e.g., Maven, Gradle, or a direct command
+# Example using Maven:
+mvn test
 
-      - name: Grant execute permission for Appium test script
-        run: chmod +x scripts/run_offline_appium_tests.sh
+# Example using Gradle:
+# ./gradlew test
 
-      - name: Run Appium Tests (E2E)
-        run: ./scripts/run_offline_appium_tests.sh
+# Example using a direct command:
+# node your_test_script.js
+
+# Print a message indicating the end of the script
+echo "Appium Tests Completed"
