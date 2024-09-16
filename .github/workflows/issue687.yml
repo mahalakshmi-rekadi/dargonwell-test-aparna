@@ -1,4 +1,5 @@
 name: Appium Tests
+
 on:
   workflow_dispatch:
 
@@ -16,14 +17,20 @@ jobs:
           java-version: '17'
           distribution: 'zulu'
           cache: gradle
-          
+
       - name: Grant execute permission for gradlew
-        run: chmod +x gradlew
+        run: chmod +x ./gradlew
 
-      - name: Appium Tests (E2E)
-        run: |
-          chmod +x run_offline_appium_tests.sh
-          ./run_offline_appium_tests.sh
-        working-directory: scripts
+      - name: Grant execute permission for Appium test script
+        run: chmod +x scripts/run_offline_appium_tests.sh
 
-     
+      - name: Run Appium Tests (E2E)
+        run: ./scripts/run_offline_appium_tests.sh
+
+      - name: Cache Gradle dependencies
+        uses: actions/cache@v3
+        with:
+          path: ~/.gradle/caches
+          key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*', '**/gradle-wrapper.properties') }}
+          restore-keys: |
+            ${{ runner.os }}-gradle-
