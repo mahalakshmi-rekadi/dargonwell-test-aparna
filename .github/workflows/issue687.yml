@@ -18,7 +18,7 @@ jobs:
           cache: gradle
           
       - name: Grant execute permission for gradlew
-        run: chmod +x scripts/run_offline_appium_tests.sh
+        run: chmod +x gradlew
 
       - name: Appium Tests (E2E)
         run: |
