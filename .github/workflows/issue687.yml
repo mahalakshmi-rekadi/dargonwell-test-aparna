@@ -11,6 +11,9 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4.1.7
 
+      - name: List files for debugging
+        run: ls -la
+
       - name: Set up JDK 17
         uses: actions/setup-java@v4.3.0
         with:
@@ -19,7 +22,7 @@ jobs:
           cache: gradle
 
       - name: Grant execute permission for gradlew
-        run: chmod +x ./gradlew
+        run: chmod +x gradle/gradlew
 
       - name: Grant execute permission for Appium test script
         run: chmod +x scripts/run_offline_appium_tests.sh
