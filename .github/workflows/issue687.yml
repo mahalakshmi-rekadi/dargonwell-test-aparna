@@ -32,6 +32,8 @@ jobs:
 
       - name: Verify permissions for Appium test script
         run: ls -la scripts
+      - name: Run Gradle Build
+        run: ./gradle build
 
       - name: Run Appium Tests (E2E)
         run: ./scripts/run_offline_appium_tests.sh
