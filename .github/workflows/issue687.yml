@@ -1,11 +1,12 @@
 name: Appium Tests
 
 on:
-  workflow_dispatch:
+ workflow_dispatch:
+      
 
 jobs:
   appium-tests:
-    runs-on: macos-latest
+    runs-on: ubuntu-latest
 
     steps:
       - uses: actions/checkout@v4.1.7
@@ -17,4 +18,11 @@ jobs:
           distribution: 'zulu'
           cache: gradle
 
-     
+      - name: Grant execute permission for gradlew
+        run: chmod +x gradlew
+
+      - name: Appium Tests (E2E)
+        run: |
+          chmod +x run_offline_appium_tests.sh
+          ./run_offline_appium_tests.sh
+        working-directory: scripts
