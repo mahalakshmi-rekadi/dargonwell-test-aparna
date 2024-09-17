@@ -1,18 +1,20 @@
 name: Appium Tests
 
 on:
-  workflow_dispatch:
+  push:
+    branches:
+      - "develop"
+  pull_request:
+    branches:
+      - "main"
+      - "develop"
 
 jobs:
   appium-tests:
-    runs-on: self-hosted
+    runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4.1.7
-
-      - name: List files for debugging
-        run: ls -la
+      - uses: actions/checkout@v4.1.7
 
       - name: Set up JDK 17
         uses: actions/setup-java@v4.3.0
@@ -22,27 +24,10 @@ jobs:
           cache: gradle
 
       - name: Grant execute permission for gradlew
-        run: chmod +x gradle
+        run: chmod +x gradlew
 
-      - name: List files in scripts directory for debugging
-        run: ls -la scripts
-
-      - name: Grant execute permission for Appium test script
-        run: chmod +x scripts/run_offline_appium_tests.sh
-
-      - name: Verify permissions for Appium test script
-        run: ls -la scripts
-
-      - name: Run Gradle Build
-        run: ./gradle build
-
-      - name: Run Appium Tests (E2E)
-        run: ./scripts/run_offline_appium_tests.sh
-
-      - name: Cache Gradle dependencies
-        uses: actions/cache@v3
-        with:
-          path: ~/.gradle/caches
-          key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*', '**/gradle-wrapper.properties') }}
-          restore-keys: |
-            ${{ runner.os }}-gradle-
+      - name: Appium Tests (E2E)
+        run: |
+          chmod +x run_offline_appium_tests.sh
+          ./run_offline_appium_tests.sh
+        working-directory: scripts
