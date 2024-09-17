@@ -22,7 +22,7 @@ jobs:
           cache: gradle
 
       - name: Grant execute permission for gradlew
-        run: chmod +x gradlew
+        run: chmod +x gradle
 
       - name: List files in scripts directory for debugging
         run: ls -la scripts
@@ -34,7 +34,7 @@ jobs:
         run: ls -la scripts
 
       - name: Run Gradle Build
-        run: ./gradlew build
+        run: ./gradle build
 
       - name: Run Appium Tests (E2E)
         run: ./scripts/run_offline_appium_tests.sh
