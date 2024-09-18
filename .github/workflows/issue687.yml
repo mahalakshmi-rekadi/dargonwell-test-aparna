@@ -18,7 +18,7 @@ jobs:
           distribution: 'zulu'
           cache: gradle
       - name: Cache Gradle dependencies
-        uses: actions/cache@v4.3.0
+        uses: actions/cache@v4.1.7
         with:
           path: |
             ~/.gradle/caches
