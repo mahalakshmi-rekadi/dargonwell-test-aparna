@@ -17,12 +17,13 @@ jobs:
           java-version: '17'
           distribution: 'zulu'
           cache: gradle
-      - name: Cache Gradle dependencies
+      - name: Cache additional directories
         uses: actions/cache@v2
         with:
           path: |
             ~/.gradle/caches
             ~/.gradle/wrapper
+            # Add any additional directories you want to cache here
           key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*', '**/gradle-wrapper.properties') }}
           restore-keys: |
             ${{ runner.os }}-gradle-
